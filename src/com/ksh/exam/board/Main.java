@@ -6,6 +6,11 @@ public class Main {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
 
+    Article article = new Article();
+    article.title = "";
+    article.body = "";
+    article.id  = 0;
+
     System.out.println("== 게시판 v 0.1 ==");
     System.out.println("== 프로그램 시작 ==");
 
@@ -16,15 +21,17 @@ public class Main {
       String cmd = scanner.nextLine();
 
       if (cmd.equals("/usr/article/write")){
-        System.out.println("게시물 등록");
+        System.out.println("== 게시물 등록 ==");
         System.out.printf("제목 : ");
-        String title = scanner.nextLine();
+        article.title = scanner.nextLine();
         System.out.printf("내용 : ");
-        String body = scanner.nextLine();
-        int id = articleLastId + 1;
+        article.body = scanner.nextLine();
+        article.id = articleLastId + 1;
         articleLastId++;
-        //int id = ++articleLastId; 이것도 가능
-        System.out.printf("%d번 게시물이 등록되었습니다.\n", id);
+
+        System.out.println("생성 된 게시물 객체 : " + article);
+
+        System.out.printf("%d번 게시물이 등록되었습니다.\n", article.id);
       }
 
       else if (cmd.equals("exit")){
@@ -39,4 +46,10 @@ public class Main {
     System.out.println("== 프로그램 종료 ==");
     scanner.close();
   }
+}
+
+class Article {
+  String title;
+  String body;
+  int id;
 }
