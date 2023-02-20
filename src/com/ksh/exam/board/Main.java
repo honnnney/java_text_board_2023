@@ -6,10 +6,7 @@ public class Main {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
 
-    Article article = new Article();
-    article.title = "";
-    article.body = "";
-    article.id  = 0;
+
 
     System.out.println("== 게시판 v 0.1 ==");
     System.out.println("== 프로그램 시작 ==");
@@ -21,13 +18,18 @@ public class Main {
       String cmd = scanner.nextLine();
 
       if (cmd.equals("/usr/article/write")){
+
+
         System.out.println("== 게시물 등록 ==");
         System.out.printf("제목 : ");
-        article.title = scanner.nextLine();
+        String title = scanner.nextLine();
         System.out.printf("내용 : ");
-        article.body = scanner.nextLine();
-        article.id = articleLastId + 1;
+        String body = scanner.nextLine();
+        int id = articleLastId + 1;
         articleLastId++;
+
+        Article article = new Article(id, title, body);
+
 
         System.out.println("생성 된 게시물 객체 : " + article);
 
@@ -52,6 +54,12 @@ class Article {
   String title;
   String body;
   int id;
+
+  Article(int id, String title, String body){
+    this.id = id;
+    this.title = title;
+    this.body = body;
+  }
 
   @Override
   public String toString() {
