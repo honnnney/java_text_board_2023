@@ -52,4 +52,9 @@ class Article {
   String title;
   String body;
   int id;
+
+  @Override
+  public String toString() {
+    return String.format("{id: %d, title: %s, body: %s}", id, title, body);
+  }
 }
